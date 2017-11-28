@@ -41,7 +41,7 @@ namespace CromulentBisgetti.ContainerPacking
 
 					itemsToPack.ForEach(item =>
 					{
-						items.Add(new Item(item.ID, item.Dim1, item.Dim2, item.Dim3, item.Quantity));
+						items.Add(new Item(item.ID, item.Length, item.Width, item.Height, item.Quantity));
 					});
 
 					Stopwatch stopwatch = new Stopwatch();
@@ -90,6 +90,9 @@ namespace CromulentBisgetti.ContainerPacking
 			{
 				case (int)AlgorithmType.EB_AFIT:
 					return new EB_AFIT();
+
+				case (int)AlgorithmType.AK_PACK:
+					return new AK_PACK();
 
 				default:
 					throw new Exception("Invalid algorithm type.");

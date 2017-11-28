@@ -15,30 +15,46 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 	{
 		#region Private Variables
 
-		private decimal volume;
-
 		#endregion Private Variables
 
 		#region Constructors
-
+		public Item() { }
 		/// <summary>
 		/// Initializes a new instance of the Item class.
 		/// </summary>
 		/// <param name="id">The item ID.</param>
-		/// <param name="dim1">The length of one of the three item dimensions.</param>
-		/// <param name="dim2">The length of another of the three item dimensions.</param>
-		/// <param name="dim3">The length of the other of the three item dimensions.</param>
+		/// <param name="length">The length of one of the three item dimensions.</param>
+		/// <param name="width">The length of another of the three item dimensions.</param>
+		/// <param name="height">The length of the other of the three item dimensions.</param>
 		/// <param name="itemQuantity">The item quantity.</param>
-		public Item(int id, decimal dim1, decimal dim2, decimal dim3, int quantity)
+		public Item(int id, decimal length, decimal width, decimal height, int quantity)
 		{
 			this.ID = id;
-			this.Dim1 = dim1;
-			this.Dim2 = dim2;
-			this.Dim3 = dim3;
-			this.volume = dim1 * dim2 * dim3;
+			this.Length = length;
+			this.Width = width;
+			this.Height = height;
 			this.Quantity = quantity;
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the Item class by copying another item
+		/// </summary>
+		/// <param name="original">the Item object to copy</param>
+		public Item(Item original)
+		{
+			ID = original.ID;
+			IsPacked = original.IsPacked;
+			Length = original.Length;
+			Width = original.Width;
+			Height = original.Height;
+			CoordLength = original.CoordLength;
+			CoordWidth = original.CoordWidth;
+			CoordHeight = original.CoordHeight;
+			Quantity = original.Quantity;
+			PackLength = original.PackLength;
+			PackWidth = original.PackWidth;
+			PackHeight = original.PackHeight;
+		}
 		#endregion Constructors
 
 		#region Public Properties
@@ -68,7 +84,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The first item dimension.
 		/// </value>
 		[DataMember]
-		public decimal Dim1 { get; set; }
+		public decimal Length { get; set; }
 
 		/// <summary>
 		/// Gets or sets the length another of the item dimensions.
@@ -77,7 +93,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The second item dimension.
 		/// </value>
 		[DataMember]
-		public decimal Dim2 { get; set; }
+		public decimal Width { get; set; }
 
 		/// <summary>
 		/// Gets or sets the third of the item dimensions.
@@ -86,7 +102,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The third item dimension.
 		/// </value>
 		[DataMember]
-		public decimal Dim3 { get; set; }
+		public decimal Height { get; set; }
 
 		/// <summary>
 		/// Gets or sets the x coordinate of the location of the packed item within the container.
@@ -95,7 +111,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The x coordinate of the location of the packed item within the container.
 		/// </value>
 		[DataMember]
-		public decimal CoordX { get; set; }
+		public decimal CoordLength { get; set; }
 
 		/// <summary>
 		/// Gets or sets the y coordinate of the location of the packed item within the container.
@@ -104,7 +120,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The y coordinate of the location of the packed item within the container.
 		/// </value>
 		[DataMember]
-		public decimal CoordY { get; set; }
+		public decimal CoordWidth { get; set; }
 
 		/// <summary>
 		/// Gets or sets the z coordinate of the location of the packed item within the container.
@@ -113,7 +129,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The z coordinate of the location of the packed item within the container.
 		/// </value>
 		[DataMember]
-		public decimal CoordZ { get; set; }
+		public decimal CoordHeight { get; set; }
 
 		/// <summary>
 		/// Gets or sets the item quantity.
@@ -121,6 +137,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// <value>
 		/// The item quantity.
 		/// </value>
+		[DataMember]
 		public int Quantity { get; set; }
 
 		/// <summary>
@@ -130,7 +147,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The x dimension of the orientation of the item as it has been packed.
 		/// </value>
 		[DataMember]
-		public decimal PackDimX { get; set; }
+		public decimal PackLength { get; set; }
 
 		/// <summary>
 		/// Gets or sets the y dimension of the orientation of the item as it has been packed.
@@ -139,7 +156,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The y dimension of the orientation of the item as it has been packed.
 		/// </value>
 		[DataMember]
-		public decimal PackDimY { get; set; }
+		public decimal PackWidth { get; set; }
 
 		/// <summary>
 		/// Gets or sets the z dimension of the orientation of the item as it has been packed.
@@ -148,7 +165,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The z dimension of the orientation of the item as it has been packed.
 		/// </value>
 		[DataMember]
-		public decimal PackDimZ { get; set; }
+		public decimal PackHeight { get; set; }
 
 		/// <summary>
 		/// Gets the item volume.
@@ -157,13 +174,7 @@ namespace CromulentBisgetti.ContainerPacking.Entities
 		/// The item volume.
 		/// </value>
 		[DataMember]
-		public decimal Volume 
-		{
-			get
-			{
-				return volume;
-			}
-		}
+		public decimal Volume { get { return Length * Width * Height; } }
 
 		#endregion Public Properties
 	}

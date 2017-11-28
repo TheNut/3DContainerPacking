@@ -83,6 +83,7 @@
 								<td class="algorithm-name-column">
 									<select id="algorithm-select" class="form-control">
 										<option value="1">EB-AFIT</option>
+										<option value="2">AK-PACK</option>
 									</select>
 								</td>
 								<td></td>
@@ -95,7 +96,10 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title pull-left">Items to Pack</h3>
-						<div class="pull-right"><button class="btn btn-default btn-sm" data-bind="click: GenerateItemsToPack">Generate</button></div>
+						<div class="pull-right">
+							<select ID="ItemVersion"><option value="1">v1</option><option value="2">v2</option><option value="3">v3</option></select>
+							<button class="btn btn-default btn-sm" data-bind="click: GenerateItemsToPack(document.getElementById('ItemVersion').value)">Generate</button>
+						</div>
 						<div class="clearfix"></div>
 					</div>
 					<div class="panel-body">
@@ -146,7 +150,8 @@
 					<div class="panel-heading">
 						<h3 class="panel-title pull-left">Containers</h3>
 						<div class="pull-right">
-							<button class="btn btn-default btn-sm" data-bind="click: GenerateContainers">Generate</button>
+							<select ID="ContainerVersion"><option value="1">v1</option><option value="2">v2</option><option value="3">v3</option></select>
+							<button class="btn btn-default btn-sm" data-bind="click: GenerateContainers(document.getElementById('ContainerVersion').value)">Generate</button>
 							<button class="btn btn-primary btn-sm" data-bind="click: PackContainers">Pack Em Up</button>
 						</div>
 						<div class="clearfix"></div>

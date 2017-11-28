@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\AK_PACK.cs" />
     <Compile Include="Algorithms\AlgorithmType.cs" />
     <Compile Include="Entities\AlgorithmPackingResult.cs" />
     <Compile Include="PackingService.cs" />

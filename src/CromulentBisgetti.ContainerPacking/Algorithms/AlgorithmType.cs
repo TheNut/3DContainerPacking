@@ -14,6 +14,11 @@ namespace CromulentBisgetti.ContainerPacking.Algorithms
 		/// The EB-AFIT packing algorithm type.
 		/// </summary>
 		[DataMember]
-		EB_AFIT = 1
+		EB_AFIT = 1,
+		/// <summary>
+		/// The AK packing algorithm type.
+		/// </summary>
+		[DataMember]
+		AK_PACK = 2
 	}
 }

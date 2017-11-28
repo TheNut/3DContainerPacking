@@ -81,31 +81,46 @@ var ViewModel = function () {
 	self.NewItemToPack = ko.mapping.fromJS(new ItemToPack());
 	self.NewContainer = ko.mapping.fromJS(new Container());
 
-	self.GenerateItemsToPack = function () {
+	self.GenerateItemsToPack = function (preset) {
 		self.ItemsToPack([]);
-		self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1000, Name: 'Item1', Length: 5, Width: 4, Height: 2, Quantity: 1 }));
-		self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1001, Name: 'Item2', Length: 2, Width: 1, Height: 1, Quantity: 3 }));
-		self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1002, Name: 'Item3', Length: 9, Width: 7, Height: 3, Quantity: 4 }));
-		self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1003, Name: 'Item4', Length: 13, Width: 6, Height: 3, Quantity: 8 }));
-		self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1004, Name: 'Item5', Length: 17, Width: 8, Height: 6, Quantity: 1 }));
-		self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1005, Name: 'Item6', Length: 3, Width: 3, Height: 2, Quantity: 2 }));
+		if (preset == "1") {
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1000, Name: 'Item1', Length: 16, Width: 12, Height: 9, Quantity: 1 }));
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1001, Name: 'Item2', Length: 9, Width: 4, Height: 2, Quantity: 1 }));
+		} else if (preset == "2") {
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1000, Name: 'Item3', Length: 8, Width: 4, Height: 2, Quantity: 4 }));
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1001, Name: 'Item4', Length: 27, Width: 24, Height: 3, Quantity: 1 }));
+		} else {
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1000, Name: 'Item1', Length: 5, Width: 4, Height: 2, Quantity: 1 }));
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1001, Name: 'Item2', Length: 2, Width: 1, Height: 1, Quantity: 3 }));
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1002, Name: 'Item3', Length: 9, Width: 7, Height: 3, Quantity: 4 }));
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1003, Name: 'Item4', Length: 13, Width: 6, Height: 3, Quantity: 8 }));
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1004, Name: 'Item5', Length: 17, Width: 8, Height: 6, Quantity: 1 }));
+			self.ItemsToPack.push(ko.mapping.fromJS({ ID: 1005, Name: 'Item6', Length: 3, Width: 3, Height: 2, Quantity: 2 }));
+		}
 	};
 	
-	self.GenerateContainers = function () {
+	self.GenerateContainers = function (preset) {
 		self.Containers([]);
-		self.Containers.push(ko.mapping.fromJS({ ID: 1000, Name: 'Box1', Length: 15, Width: 13, Height: 9, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1001, Name: 'Box2', Length: 23, Width: 9, Height: 4, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1002, Name: 'Box3', Length: 16, Width: 16, Height: 6, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1003, Name: 'Box4', Length: 10, Width: 8, Height: 5, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1004, Name: 'Box5', Length: 40, Width: 28, Height: 20, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1005, Name: 'Box6', Length: 29, Width: 19, Height: 4, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1006, Name: 'Box7', Length: 18, Width: 13, Height: 1, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1007, Name: 'Box8', Length: 6, Width: 6, Height: 6, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1008, Name: 'Box9', Length: 8, Width: 5, Height: 5, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1009, Name: 'Box10', Length: 18, Width: 13, Height: 8, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1010, Name: 'Box11', Length: 17, Width: 16, Height: 15, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1011, Name: 'Box12', Length: 32, Width: 10, Height: 9, AlgorithmPackingResults: [] }));
-		self.Containers.push(ko.mapping.fromJS({ ID: 1012, Name: 'Box13', Length: 60, Width: 60, Height: 60, AlgorithmPackingResults: [] }));
+		if (preset == "1") {
+			self.Containers.push(ko.mapping.fromJS({ ID: 1000, Name: 'Box1', Length: 18, Width: 12, Height: 9, AlgorithmPackingResults: [] }));
+		} else if (preset == "2") {
+			self.Containers.push(ko.mapping.fromJS({ ID: 1000, Name: 'Box1', Length: 28, Width: 25, Height: 3, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1001, Name: 'Box2', Length: 18, Width: 12, Height: 12, AlgorithmPackingResults: [] }));
+		} else {
+			self.Containers.push(ko.mapping.fromJS({ ID: 1000, Name: 'Box1', Length: 15, Width: 13, Height: 9, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1001, Name: 'Box2', Length: 23, Width: 9, Height: 4, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1002, Name: 'Box3', Length: 16, Width: 16, Height: 6, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1003, Name: 'Box4', Length: 10, Width: 8, Height: 5, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1004, Name: 'Box5', Length: 40, Width: 28, Height: 20, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1005, Name: 'Box6', Length: 29, Width: 19, Height: 4, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1006, Name: 'Box7', Length: 18, Width: 13, Height: 1, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1007, Name: 'Box8', Length: 6, Width: 6, Height: 6, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1008, Name: 'Box9', Length: 8, Width: 5, Height: 5, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1009, Name: 'Box10', Length: 18, Width: 13, Height: 8, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1010, Name: 'Box11', Length: 17, Width: 16, Height: 15, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1011, Name: 'Box12', Length: 32, Width: 10, Height: 9, AlgorithmPackingResults: [] }));
+			self.Containers.push(ko.mapping.fromJS({ ID: 1012, Name: 'Box13', Length: 60, Width: 60, Height: 60, AlgorithmPackingResults: [] }));
+		}
 	};
 
 	self.AddAlgorithmToUse = function () {
@@ -157,9 +172,9 @@ var ViewModel = function () {
 		self.ItemsToPack().forEach(item => {
 			var itemToPack = {
 				ID: item.ID(),
-				Dim1: item.Length(),
-				Dim2: item.Width(),
-				Dim3: item.Height(),
+				Length: item.Length(),
+				Width: item.Width(),
+				Height: item.Height(),
 				Quantity: item.Quantity()
 			};
 			
@@ -248,14 +263,14 @@ var ViewModel = function () {
 		var itemIndex = self.LastItemRenderedIndex() + 1;
 
 		var itemOriginOffset = {
-			x: self.ItemsToRender()[itemIndex].PackDimX / 2,
-			y: self.ItemsToRender()[itemIndex].PackDimY / 2,
-			z: self.ItemsToRender()[itemIndex].PackDimZ / 2
+			x: self.ItemsToRender()[itemIndex].PackLength / 2,
+			y: self.ItemsToRender()[itemIndex].PackHeight / 2,
+			z: self.ItemsToRender()[itemIndex].PackWidth / 2
 		};
 
-		var itemGeometry = new THREE.BoxGeometry(self.ItemsToRender()[itemIndex].PackDimX, self.ItemsToRender()[itemIndex].PackDimY, self.ItemsToRender()[itemIndex].PackDimZ);
+		var itemGeometry = new THREE.BoxGeometry(self.ItemsToRender()[itemIndex].PackLength, self.ItemsToRender()[itemIndex].PackHeight, self.ItemsToRender()[itemIndex].PackWidth);
 		var cube = new THREE.Mesh(itemGeometry, itemMaterial);
-		cube.position.set(self.ContainerOriginOffset.x + itemOriginOffset.x + self.ItemsToRender()[itemIndex].CoordX, self.ContainerOriginOffset.y + itemOriginOffset.y + self.ItemsToRender()[itemIndex].CoordY, self.ContainerOriginOffset.z + itemOriginOffset.z + self.ItemsToRender()[itemIndex].CoordZ);
+		cube.position.set(self.ContainerOriginOffset.x + itemOriginOffset.x + self.ItemsToRender()[itemIndex].CoordLength, self.ContainerOriginOffset.y + itemOriginOffset.y + self.ItemsToRender()[itemIndex].CoordWidth, self.ContainerOriginOffset.z + itemOriginOffset.z + self.ItemsToRender()[itemIndex].CoordHeight);
 		cube.name = 'cube' + itemIndex;
 		scene.add( cube );
 
