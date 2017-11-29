@@ -164,7 +164,7 @@ namespace CromulentBisgetti.ContainerPacking.Algorithms
                                     obstructed = true;
                                     //increment placeX to the right of the itemToCheck
                                     if (placeLength < (itemToCheck.CoordLength + itemToCheck.PackLength))
-                                        placeLength = (int)Math.Ceiling(itemToCheck.CoordLength + itemToCheck.PackLength);
+                                        placeLength = (int)Math.Ceiling(itemToCheck.CoordLength + itemToCheck.PackLength)-1;
                                     //skip checking the rest of the packedItems
                                     break;
                                 }
